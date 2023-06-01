@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #000;
+}
+
 .container {
     width: 1200px;
     margin: 50px auto;
@@ -34,6 +38,7 @@
     top: 50%;
     translate: 0 -50%;
     cursor: pointer;
+    color: #fff;
 }
 
 .fa-caret-left {
@@ -45,4 +50,26 @@
 
 #carousel img.active{
     display:block;
+}
+
+.thumbnails {
+    margin: 50px -10px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+}
+
+.thumbnails img {
+    width: calc(100% / 5 - 20px);
+    height: 100%;
+    object-fit: cover;
+    object-position: right;
+    display: block;
+    border-radius: 10px;
+    margin: 0 10px;
+    position: relative;
+    opacity: 0.5;
+}
+.thumbnails img.o-none {
+    opacity: 1;
 }

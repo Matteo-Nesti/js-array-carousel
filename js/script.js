@@ -23,7 +23,8 @@ console.log('JS OK')
 const buttonNext = document.getElementById('next')
 const buttonPre = document.getElementById('pre')
 const carousel = document.getElementById('carousel')
-
+// thumbnails dal DOM
+const thumbnails = document.querySelector('.thumbnails')
 
 
 // array img
@@ -38,29 +39,41 @@ for (i = 0; i < sources.length; i++){
 }
 //stampa img nel DOM
 carousel.innerHTML = imageElement;
+// stampa thumbnails nel DOM
+thumbnails.innerHTML = imageElement;
 
 // recupero img inserite nel dom tramite ciclo e templete literal
 const images = document.querySelectorAll('#carousel img')
+const thumbImages = document.querySelectorAll('.thumbnails img') 
 
 // setto indice di base
 let index = 0;
 
 // imposto prima immagine attiva
 images[index].classList.add('active');
+thumbImages[index].classList.add('o-none');
 
 // entro in ascolto del primo bottone 
 
 buttonNext.addEventListener('click', function() {
   // condizione di uscita per numero massimo
-    if (index === images.length - 1) {
+    if (index === images.length - 1 && index === thumbImages.length - 1) {
+      // rimuovo l'immagine corrente
       images[index].classList.remove('active');
+      thumbImages[index].classList.remove('o-none')
+      // riporta index a 0
       index = 0;
+      // aggiungo la classe 'active' alla prima immagine
       images[index].classList.add('active');
+      thumbImages[index].classList.add('o-none')
     }
-      else {
+    // altrimenti procedi normalmente con l'incremento dell'indice
+    else {
       images[index].classList.remove('active');
+      thumbImages[index].classList.remove('o-none')
       index++;
       images[index].classList.add('active');
+      thumbImages[index].classList.add('o-none')
     }
     
   
@@ -71,15 +84,22 @@ buttonNext.addEventListener('click', function() {
 buttonPre.addEventListener('click', function() {
     // condizione di uscita per numero minimo 
     if(!index) {
+      // rimuovo la classe 'active' all' immagine corrente
       images[index].classList.remove('active')
+      thumbImages[index].classList.remove('o-none')
+      // riporto l'index all' ultimo elemento
       index = images.length - 1
+      // aggiungo la classe active all' ultima immagine
       images[index].classList.add('active')
+      thumbImages[index].classList.add('o-none')
     }
-// altrimenti viene eseguita la funzione 
+// altrimenti viene eseguita la funzione normalmente
     else {
       images[index].classList.remove('active');
+      thumbImages[index].classList.remove('o-none')
       index--; 
       images[index].classList.add('active');
+      thumbImages[index].classList.add('o-none')
     }
 
 })
