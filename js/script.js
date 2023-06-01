@@ -29,16 +29,17 @@ const carousel = document.getElementById('carousel')
 // array img
 const sources = ['img/01.webp', 'img/02.webp', 'img/03.webp', 'img/04.webp', 'img/05.webp']
 
-// variabile vuota per html 
+// variabile vuota che servira` ad essere riempita per essere inserita nel DOM(messa fuori per lo scope)
 let imageElement = '';
 
-// ciclo 
+// ciclo per controllare le img da inserire nel DOM
 for (i = 0; i < sources.length; i++){
     imageElement += `<img src="${sources[i]}">`;
 }
+//stampa img nel DOM
 carousel.innerHTML = imageElement;
 
-// recupero img
+// recupero img inserite nel dom tramite ciclo e templete literal
 const images = document.querySelectorAll('#carousel img')
 
 // setto indice di base
@@ -50,9 +51,10 @@ images[index].classList.add('active');
 // entro in ascolto del primo bottone 
 
 buttonNext.addEventListener('click', function() {
-
+  // condizione di uscita per numero massimo
     if (index === images.length - 1) return;
 
+  // altrimenti viene eseguita la funzione 
     images[index].classList.remove('active');
     
     index++;
@@ -63,9 +65,9 @@ buttonNext.addEventListener('click', function() {
 //secondo bottone
 
 buttonPre.addEventListener('click', function() {
-    
+    // condizione di uscita per numero minimo 
     if(!index) return;
-
+// altrimenti viene eseguita la funzione 
     images[index].classList.remove('active');
     
     index--;
