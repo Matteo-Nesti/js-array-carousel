@@ -52,27 +52,35 @@ images[index].classList.add('active');
 
 buttonNext.addEventListener('click', function() {
   // condizione di uscita per numero massimo
-    if (index === images.length - 1) return;
-
-  // altrimenti viene eseguita la funzione 
-    images[index].classList.remove('active');
+    if (index === images.length - 1) {
+      images[index].classList.remove('active');
+      index = 0;
+      images[index].classList.add('active');
+    }
+      else {
+      images[index].classList.remove('active');
+      index++;
+      images[index].classList.add('active');
+    }
     
-    index++;
-
-    images[index].classList.add('active');
-
+  
+    
 })
 //secondo bottone
 
 buttonPre.addEventListener('click', function() {
     // condizione di uscita per numero minimo 
-    if(!index) return;
+    if(!index) {
+      images[index].classList.remove('active')
+      index = images.length - 1
+      images[index].classList.add('active')
+    }
 // altrimenti viene eseguita la funzione 
-    images[index].classList.remove('active');
-    
-    index--;
-
-    images[index].classList.add('active');
+    else {
+      images[index].classList.remove('active');
+      index--; 
+      images[index].classList.add('active');
+    }
 
 })
 
